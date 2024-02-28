@@ -1,0 +1,10 @@
+---
+- hosts: webserver
+  become: true
+  tasks:
+    - name: Create multiple directory
+      file: path="{{ item }}" state=directory mode=775 owner=support group=support
+      with_items:
+       - '/home/admin/dir1'
+       - '/home/admin/dir2'
+       - '/home/admin/dir3'
